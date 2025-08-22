@@ -1,0 +1,10 @@
+﻿RewriteEngine On
+
+# If already in /public, stop here
+RewriteCond %{REQUEST_URI} ^/public/ [NC]
+RewriteRule ^ - [L]
+
+# Send everything to /public, keep the rest of the path and query string
+RewriteRule ^(.*)$ public/$1 [L,QSA]
+
+Options -Indexes

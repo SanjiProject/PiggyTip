@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" class="h-full dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page not found — PiggyTip.me</title>
+  <meta name="description" content="Sorry, we couldn't find that page. Head back to PiggyTip.me home." />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/img/logo.webp" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT:'#FF96AF',
+              50:'#FFF1F4', 100:'#FFE4EA', 200:'#FFC8D3', 300:'#FFA9BE', 400:'#FF8AAA',
+              500:'#FF6C97', 600:'#FF5289', 700:'#E24B78', 800:'#BF3A62', 900:'#8F2B49'
+            }
+          },
+          boxShadow:{ soft:'0 10px 30px -10px rgba(2,6,23,.25)'}
+        }
+      }
+    }
+  </script>
+  <meta name="color-scheme" content="dark">
+  <style>
+    :root{
+      --bg:#0b1220; --bg2:#0e1629; --surface:#0f172a; --surface2:#0b1220;
+      --border:rgba(148,163,184,.14); --border-strong:rgba(148,163,184,.24);
+      --text:#e5e7eb; --muted:#cbd5e1; --accent:#FF96AF; --ring:#FF96AF;
+      --shadow:0 20px 40px -24px rgba(2,6,23,.7);
+    }
+    .container{max-width:1120px}
+    @media (min-width:1280px){ .container{ max-width:1200px } }
+    html,body{font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin:0; padding:0; color:var(--text)}
+    .bg-grid {background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.04) 1px, transparent 0); background-size: 24px 24px}
+    .dark .bg-grid {background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.06) 1px, transparent 0)}
+    .ui-card{ background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)) , var(--surface); border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); }
+    .ui-item{ background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)) , var(--bg2); border:1px solid var(--border); border-radius:14px; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+    .ui-item:hover{ border-color:var(--border-strong); box-shadow:0 12px 28px -24px rgba(0,0,0,.8); transform: translateY(-1px); }
+    .dark input,.dark textarea,.dark select{ background:var(--bg2); color:var(--text); border:1px solid var(--border); border-radius:12px; transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease; }
+    .dark input::placeholder,.dark textarea::placeholder{color:var(--muted)}
+    .dark input:focus,.dark textarea:focus,.dark select:focus{outline:none; box-shadow:0 0 0 3px rgba(255,150,175,.35); border-color:var(--ring)}
+    .dark label{color:var(--text)}
+    .dark .bg-primary-600{ background-image: linear-gradient(135deg, #FF96AF, #FF6C97); color:#fff }
+    .dark .hover\:bg-primary-700:hover{ filter: brightness(1.05); }
+    .dark .border{ border-color: var(--border) !important; }
+    .dark .bg-white{ background-color: var(--surface) !important; }
+    .dark .bg-gray-800{ background-color: var(--surface) !important; }
+    .dark .text-gray-500{ color: var(--muted) !important; }
+    .site-header{ backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(10,10,10,.92), rgba(15,23,42,.7)); border-bottom:1px solid var(--border); }
+    .site-header .brand-dot{ background-image: linear-gradient(135deg,#FF96AF,#FF6C97) !important; box-shadow: 0 10px 30px -12px rgba(255,150,175,.45); }
+    .site-header nav a.nav-link{ color: var(--muted); padding:.5rem .6rem; border-radius:.75rem; transition: color .2s ease, background-color .2s ease, border-color .2s ease, transform .2s ease; }
+    .site-header nav a.nav-link:hover{ color:#e5e7eb; background: rgba(148,163,184,.08); }
+    .site-header nav a.nav-cta{ color:#fff; background-image: linear-gradient(135deg,#FF96AF,#FF6C97); box-shadow: 0 12px 24px -16px rgba(255,150,175,.55); padding:.5rem .9rem; }
+    .site-header nav a.nav-cta:hover{ filter: brightness(1.06); }
+    .dark .bg-primary-50{ background-color: rgba(255,150,175,.12) !important; border-color: rgba(255,150,175,.28) !important; }
+    #menuBtn{ position: relative; color: var(--muted); display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; border:none; background:transparent }
+    #menuBtn img{ height:36px; width:36px; display:block }
+    #menuBtn:hover{ filter: brightness(1.1) }
+    @media (min-width: 768px){ #menuBtn{ display:none !important } }
+    .site-bg{ background-color:#0b0f1a; position: relative; overflow-x: hidden; }
+    .site-bg::before{ content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image:
+      radial-gradient( 1100px 700px at 16% 22%, rgba(255,150,175,.38), transparent 65%),
+      radial-gradient( 1000px 650px at 84% 78%, rgba(255,108,151,.26), transparent 66%),
+      linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0)),
+      linear-gradient(120deg, #0a0d18, #0f1a2e 50%, #0a0d18 100%);
+      background-repeat: no-repeat; background-size: 280% 280%, 280% 280%, 120% 120%, 260% 260%; background-position: 0% 0%, 100% 100%, 50% 50%, 0% 50%; will-change: background-position, transform; animation: bg-pan 28s ease-in-out infinite; }
+    @keyframes bg-pan{ 0%{ transform: translate3d(0,0,0); background-position: 0% 0%, 100% 100%, 50% 50%, 0% 50%; } 40%{ transform: translate3d(0,0,0); background-position: 80% 20%, 20% 80%, 50% 50%, 80% 60%; } 70%{ transform: translate3d(0,0,0); background-position: 30% 80%, 70% 30%, 50% 50%, 30% 40%; } 100%{ transform: translate3d(0,0,0); background-position: 0% 0%, 100% 100%, 50% 50%, 0% 50%; } }
+    .btn-pink-black{ color:#0b0b0b !important; font-weight:600; }
+    .btn-pink-black:hover{ color:#0b0b0b !important; }
+  </style>
+</head>
+<body class="min-h-screen site-bg text-gray-100">
+  <header class="site-header fixed top-0 left-0 right-0 z-40">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="group flex items-center gap-3 font-semibold">
+        <img src="/img/logo.webp" alt="Logo" class="h-9 w-9 md:h-10 md:w-10 object-contain shadow-soft group-hover:scale-105 transition" />
+        <span>PiggyTip.me</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-5 text-sm">
+        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-cta rounded-lg" href="/register">Get started</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden p-1 rounded" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <img src="/img/toggle.webp" alt="Toggle" />
+      </button>
+    </div>
+    <div id="mobileNav" class="md:hidden hidden border-t border-gray-200 dark:border-gray-800">
+      <div class="container mx-auto px-4 py-2 flex flex-wrap gap-3 text-sm">
+        <a class="px-3 py-1 rounded border" href="/login">Login</a>
+        <a class="px-3 py-1 rounded border bg-primary-600 text-white" href="/register">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="pageMain" class="container mx-auto px-4 py-8">
+    <section class="min-h-[60vh] flex items-center justify-center">
+      <div class="text-center max-w-lg w-full">
+        <img src="/img/piggy.webp" alt="Piggy" class="mx-auto h-20 w-20 md:h-24 md:w-24 object-contain mb-4" />
+        <h1 class="text-3xl md:text-4xl font-semibold">Page not found</h1>
+        <p class="mt-2 text-gray-400">The page you’re looking for doesn’t exist or was moved.</p>
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
+          <a href="/" class="px-5 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 btn-pink-black">Back to home</a>
+          <a href="/dashboard" class="px-5 py-3 rounded-xl border border-gray-300 dark:border-gray-700 text-white/90 hover:text-white">Go to dashboard</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-10 text-sm text-gray-400 border-t border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto px-4 grid gap-4 sm:grid-cols-2 items-center">
+      <div class="text-center sm:text-left">
+        <span class="text-gray-500">© <span id="year"></span> PiggyTip.me</span>
+      </div>
+      <div class="text-center sm:text-right">
+        <span class="text-gray-500">Made with <span aria-hidden="true">❤️</span> by SanjiProject</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const headerEl = document.querySelector('header.site-header');
+      const applyHeaderOffset = () => { if (!headerEl) return; document.body.style.paddingTop = headerEl.offsetHeight + 'px'; };
+      applyHeaderOffset();
+      window.addEventListener('resize', applyHeaderOffset);
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      if (menuBtn && mobileNav) {
+        menuBtn.addEventListener('click', () => {
+          const hidden = mobileNav.classList.toggle('hidden');
+          menuBtn.setAttribute('aria-expanded', hidden ? 'false' : 'true');
+        });
+      }
+      const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>
+
+
