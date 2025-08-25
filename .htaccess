@@ -1,4 +1,19 @@
-﻿RewriteEngine On
+﻿<IfModule mod_rewrite.c>
+  Options -MultiViews
+  RewriteEngine On
+
+  # If the request is for an existing file or directory, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Otherwise, route everything to the public front controller
+  RewriteRule ^ public/index.php [QSA,L]
+</IfModule>
+
+# Fallback 404 page (optional)
+ErrorDocument 404 /public/404.html
+RewriteEngine On
 
 # If already in /public, stop here
 RewriteCond %{REQUEST_URI} ^/public/ [NC]

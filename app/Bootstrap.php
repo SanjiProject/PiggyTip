@@ -58,7 +58,7 @@ class DB {
         $port = (int)($dbCfg['port'] ?? 3306);
         $db   = (string)($dbCfg['database'] ?? 'piggytip');
         $user = (string)($dbCfg['username'] ?? 'piggytip');
-        $pass = (string)($dbCfg['password'] ?? '');
+        $pass = (string)($dbCfg['password'] ?? 'YxYxPmmGfkGNMSH7');
         $charset = (string)($dbCfg['charset'] ?? 'utf8mb4');
         $dsn = "mysql:host={$host};port={$port};dbname={$db};charset={$charset}";
         $options = [

@@ -11,4 +11,8 @@ class User{
   public static function create(array $d): int { $s=DB::pdo()->prepare('INSERT INTO users (username,email,password_hash,display_name,bio,avatar,slug) VALUES (?,?,?,?,?,?,?)'); $s->execute([$d['username'],$d['email'],$d['password_hash'],$d['display_name'],$d['bio']??null,$d['avatar']??null,$d['slug']]); return (int)DB::pdo()->lastInsertId(); }
   public static function updateProfile(int $id,array $d): void { $s=DB::pdo()->prepare('UPDATE users SET display_name=?, bio=?, username=?, slug=?, primary_link_id=? WHERE id=?'); $s->execute([$d['display_name'],$d['bio']??null,$d['username'],$d['slug'],$d['primary_link_id']??null,$id]); }
   public static function updateAvatar(int $id,?string $p): void { $s=DB::pdo()->prepare('UPDATE users SET avatar=? WHERE id=?'); $s->execute([$p,$id]); }
+  public static function listActiveUsernames(): array {
+    $stmt = DB::pdo()->query('SELECT username, created_at FROM users WHERE is_active = 1 ORDER BY id DESC');
+    return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
+  }
 }

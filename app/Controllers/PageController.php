@@ -2,7 +2,7 @@
 namespace App\Controllers; use App\Lib\Helpers; use App\Models\User; use App\Models\Link; use App\Models\Wallet; use App\Models\Analytics;
 
 class PageController{
-  public static function landing(): string { $pageTitle='PiggyTip.me - Collect Support with Adorable PiggyTip Design'; $sponsors=[]; $jsonPath=APP_BASE_PATH.'/public/assets/sponsors.json'; if(is_file($jsonPath)){ $raw=@file_get_contents($jsonPath); $data=json_decode($raw,true); if(is_array($data)) $sponsors=$data; } ob_start(); ?>
+  public static function landing(): string { $pageTitle='PiggyTip.me - Collect Support with Adorable PiggyTip Design'; $sponsors=[]; $jsonPath=APP_BASE_PATH.'/assets/sponsors.json'; if(is_file($jsonPath)){ $raw=@file_get_contents($jsonPath); $data=json_decode($raw,true); if(is_array($data)) $sponsors=$data; } ob_start(); ?>
   <section class="relative overflow-hidden">
     <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
       <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary-500/10 blur-3xl"></div>
@@ -80,5 +80,36 @@ class PageController{
       </div>
     </section>
     <?php $content=ob_get_clean(); ob_start(); require APP_BASE_PATH.'/app/Views/layouts/main.php'; return ob_get_clean();
+  }
+
+  public static function sitemap(): void {
+    header('Content-Type: application/xml; charset=UTF-8');
+    header('Cache-Control: public, max-age=3600');
+    $base = \App\Config::appUrl();
+    $urls = [];
+    $now = gmdate('Y-m-d\TH:i:s+00:00');
+    $push = function(string $loc, string $freq = 'weekly', ?string $lastmod = null) use (&$urls){
+      $urls[] = [ 'loc' => $loc, 'changefreq' => $freq, 'lastmod' => $lastmod ];
+    };
+    $push($base . '/', 'weekly', $now);
+    $push($base . '/sponsor', 'monthly', $now);
+    // Public user pages
+    $users = \App\Models\User::listActiveUsernames();
+    foreach ($users as $u) {
+      $loc = rtrim($base, '/') . '/' . rawurlencode($u['username']);
+      $last = !empty($u['created_at']) ? gmdate('Y-m-d\TH:i:s+00:00', strtotime($u['created_at'])) : $now;
+      $push($loc, 'weekly', $last);
+    }
+    echo '<?xml version="1.0" encoding="UTF-8"?>';
+    echo "\n";
+    echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    foreach ($urls as $u) {
+      echo '<url>';
+      echo '<loc>' . htmlspecialchars($u['loc'], ENT_XML1 | ENT_COMPAT, 'UTF-8') . '</loc>';
+      if (!empty($u['lastmod'])) echo '<lastmod>' . $u['lastmod'] . '</lastmod>';
+      if (!empty($u['changefreq'])) echo '<changefreq>' . $u['changefreq'] . '</changefreq>';
+      echo '</url>';
+    }
+    echo '</urlset>';
   }
 }

@@ -13,7 +13,7 @@ class ProfileController{
     $ok=in_array($mime,['image/jpeg','image/png','image/gif','image/webp'],true);
     if(!$ok){ $_SESSION['flash_error']='Invalid image type'; Helpers::redirect('/dashboard/profile'); }
 
-    $dir=APP_BASE_PATH.'/public/assets/uploads'; if(!is_dir($dir)) @mkdir($dir,0777,true);
+    $dir=APP_BASE_PATH.'/assets/uploads'; if(!is_dir($dir)) @mkdir($dir,0777,true);
     $name='avatar_'.$user['id'].'_'.bin2hex(random_bytes(4)).'.webp';
     $dest=$dir.'/'.$name; $public='/assets/uploads/'.$name;
 

@@ -1,0 +1,40 @@
+    # Clean URLs → front controller
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    # Sitemap (dynamic)
+    location = /sitemap.xml {
+        try_files $uri /index.php?route=/sitemap.xml;
+        access_log off;
+    }
+
+    # Static assets (cache)
+    location ~* \.(css|js|png|jpg|jpeg|gif|svg|webp|ico|woff2?|ttf|map)$ {
+        try_files $uri =404;
+        expires 7d;
+        add_header Cache-Control "public, max-age=604800";
+        access_log off;
+    }
+
+    # Favicon
+    location = /favicon.ico {
+        try_files /favicon.ico =404;
+        types { } default_type image/x-icon;
+        expires 7d;
+        access_log off;
+    }
+
+    # PHP handling
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $document_root;
+        fastcgi_intercept_errors on;
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+    }
+
+    # Security
+    location ~ /\. { deny all; }

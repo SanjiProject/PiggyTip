@@ -48,7 +48,7 @@ class ApiController{
     if(!\App\Lib\Validator::nonEmpty($name,2,60) || !\App\Lib\Validator::url($url) || !\App\Lib\Validator::nonEmpty($logo,1,255)){
       $_SESSION['flash_error']='Invalid sponsor info'; Helpers::redirect('/sponsor');
     }
-    $path=APP_BASE_PATH.'/public/assets/sponsors.json'; $list=[]; if(is_file($path)){ $list=json_decode(file_get_contents($path),true)?:[]; }
+    $path=APP_BASE_PATH.'/assets/sponsors.json'; $list=[]; if(is_file($path)){ $list=json_decode(file_get_contents($path),true)?:[]; }
     $list[]=['name'=>$name,'url'=>$url,'logo'=>$logo];
     file_put_contents($path, json_encode($list, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES));
     $_SESSION['flash_success']='Thanks! Your sponsorship has been submitted.'; Helpers::redirect('/');
