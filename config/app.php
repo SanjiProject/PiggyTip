@@ -17,7 +17,7 @@ return [
         'port'     => 3306,
         'database' => 'piggytip',
         'username' => 'piggytip',
-        'password' => 'YxYxPmmGfkGNMSH7',
+        'password' => 'PASSWORD',
         'charset'  => 'utf8mb4',
     ],
 ];
